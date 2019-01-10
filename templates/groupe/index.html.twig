@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groupe index{% endblock %}
+
+{% block body %}
+    <h1>Groupe1</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>String</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupe in groupes %}
+            <tr>
+                <td>{{ groupe.id }}</td>
+                <td>{{ groupe.string }}</td>
+                <td>
+                    <a class="btn btn-danger" href="{{ path('groupe_show', {'id': groupe.id}) }}">Détail</a>
+                    <a class="btn btn-danger" href="{{ path('groupe_edit', {'id': groupe.id}) }}">Modifié</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Rien à été modifié</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-danger" href="{{ path('groupe_new') }}">Ajouter une personne</a>
+    <a class="btn btn-danger" href="{{ path('home') }}">Retour à l'accueil </a>
+{% endblock %}
